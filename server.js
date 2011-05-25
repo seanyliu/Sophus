@@ -29,8 +29,8 @@ function load_static_file(uri, response) {
 		});
 	});
 }
-
-http.createServer(function(request, response) {
+/*
+var server = http.createServer(function(request, response) {
     var uri = url.parse(request.url).pathname;
     if(uri === "/stream") {
 
@@ -40,5 +40,13 @@ http.createServer(function(request, response) {
     else {
     	load_static_file(uri, response);
     }
-}).listen(process.env.PORT || 8001);
+});
+*/
+
+var server = http.createServer(function (req, res) {
+  res.writeHead(200, { "Content-Type": "text/plain" })
+  res.end("Hello world\n");
+});
+ 
+server.listen(process.env.PORT || 8001);
 
