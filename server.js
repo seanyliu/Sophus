@@ -9,33 +9,28 @@ function load_static_file(uri, response) {
 	var filename = path.join(process.cwd(), uri);
 	path.exists(filename, function(exists) {
 		if(!exists) {
-			response.sendHeader(404, {"Content-Type": "text/plain"});
+			response.writeHead(404, {"Content-Type": "text/plain"});
 			response.write("404 Not Found\n");
-			response.close();
+			response.end();
 			return;
 		}
 
 		fs.readFile(filename, "binary", function(err, file) {
 			if(err) {
-				response.sendHeader(500, {"Content-Type": "text/plain"});
+				response.writeHead(500, {"Content-Type": "text/plain"});
 				response.write(err + "\n");
-				response.close();
+				response.end();
 				return;
 			}
 
-			response.sendHeader(200);
+			response.writeHead(200);
 			response.write(file, "binary");
-			response.close();
+			response.end();
 		});
 	});
 }
 
 var server = http.createServer(function(request, response) {
-
-	response.writeHead(404, {"Content-Type": "text/plain"});
-			response.write("404 Not Found\n");
-			response.end();
-
 
     var uri = url.parse(request.url).pathname;
     if(uri === "/stream") {
