@@ -5,6 +5,12 @@ var sys = require("sys"),
     fs = require("fs"),
     events = require("events");
 
+/**
+ * Load any static files based on the uri.
+ * Source:
+ * learning-serverside-javascript-with-node-js/
+ * With bug corrections in response methods
+ */
 function load_static_file(uri, response) {
   var filename = path.join(process.cwd(), "client", uri); // added "client"
   path.exists(filename, function(exists) {
