@@ -29,7 +29,7 @@ function load_static_file(uri, response) {
 		});
 	});
 }
-/*
+
 var server = http.createServer(function(request, response) {
     var uri = url.parse(request.url).pathname;
     if(uri === "/stream") {
@@ -41,12 +41,6 @@ var server = http.createServer(function(request, response) {
     	load_static_file(uri, response);
     }
 });
-*/
 
-var server = http.createServer(function (req, res) {
-  res.writeHead(200, { "Content-Type": "text/plain" })
-  res.end("Hello world\n");
-});
- 
 server.listen(process.env.PORT || 8001);
 
