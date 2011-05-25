@@ -5,13 +5,8 @@ var sys = require("sys"),
     fs = require("fs"),
     events = require("events");
 
-// Load any static files based on the uri.
-// Source:
-// http://net.tutsplus.com/tutorials/javascript-ajax/..
-// learning-serverside-javascript-with-node-js/
-// With bug corrections in response methods
 function load_static_file(uri, response) {
-  var filename = path.join(process.cwd(), "client", uri); // added "client"
+  var filename = path.join(process.cwd(), "client", uri);
   path.exists(filename, function(exists) {
 
     if (fs.statSync(filename).isDirectory()) filename += '/index.html';
