@@ -6,7 +6,7 @@ var sys = require("sys"),
     events = require("events");
 
 function load_static_file(uri, response) {
-	var filename = path.join(process.cwd(), uri);
+	var filename = path.join(process.cwd(), "client", uri);
 	path.exists(filename, function(exists) {
 		if(!exists) {
 			response.writeHead(404, {"Content-Type": "text/plain"});
@@ -14,6 +14,8 @@ function load_static_file(uri, response) {
 			response.end();
 			return;
 		}
+
+                if (fs.statSync(filename).isDirectory()) filename += '/index.html';
 
 		fs.readFile(filename, "binary", function(err, file) {
 			if(err) {
