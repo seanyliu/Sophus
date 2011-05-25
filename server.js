@@ -32,9 +32,9 @@ function load_static_file(uri, response) {
 
 var server = http.createServer(function(request, response) {
 
-	response.sendHeader(404, {"Content-Type": "text/plain"});
+	response.writeHead(404, {"Content-Type": "text/plain"});
 			response.write("404 Not Found\n");
-			response.close();
+			response.end();
 
 
     var uri = url.parse(request.url).pathname;
