@@ -6,7 +6,7 @@ var sys = require("sys"),
     events = require("events");
 
 function load_static_file(uri, response) {
-	var filename = path.join(process.cwd(), 'client', uri);
+	var filename = path.join(process.cwd(), uri);
 	path.exists(filename, function(exists) {
 		if(!exists) {
 			response.sendHeader(404, {"Content-Type": "text/plain"});
