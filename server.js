@@ -9,14 +9,14 @@ function load_static_file(uri, response) {
   var filename = path.join(process.cwd(), "client", uri);
   path.exists(filename, function(exists) {
 
-    if (fs.statSync(filename).isDirectory()) filename += '/index.html';
-
     if (!exists) {
       response.writeHead(404, {"Content-Type": "text/plain"});
       response.write("404 Not Found\n");
       response.end();
       return;
     }
+
+    if (fs.statSync(filename).isDirectory()) filename += '/index.html';
 
     fs.readFile(filename, "binary", function(err, file) {
       if(err) {
