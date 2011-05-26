@@ -40,6 +40,9 @@ var server = http.createServer(function(request, response) {
   load_static_file(uri, response);
 });
 
-server.listen(process.env.PORT || 8001);
-//server.listen(process.env.C9_PORT || 8001);
+// no.de
+//server.listen(process.env.PORT || 8001);
+
+// cloude9ide
+server.listen(process.env.C9_PORT || 8001);
 
