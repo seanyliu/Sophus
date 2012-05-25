@@ -1,5 +1,5 @@
 git pull
 git add <files>
 git status
-git commit -m "COMMIT MESSAGE"
+git commit -a -m "COMMIT MESSAGE"
 git push
