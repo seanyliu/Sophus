@@ -4,26 +4,31 @@
  * Author: seanyliu
  */
 
-var global = new Object();
-global.FPS = 30;
-global.x = 0;
-global.y = 0;
-global.xDirection = 1;
-global.yDirection = 1;
-global.image = new Image();
+var global = {
+  FPS : 30,
+  x : 0,
+  y : 0,
+  xDirection : 1,
+  yDirection : 1,
+  image : new Image(),
+  canvas : null,
+  canvas2D : null
+};
+global.SECONDSBETWEENFRAMES = 1 / global.FPS;
 global.image.src = "images/sprite_sophus_reg.png";
-global.canvas = null;
-global.canvas2D = null;
+
 
 window.onload = init;
 
 function init() {
+    "use strict";
   global.canvas = document.getElementById("canvas");
   global.context2D = global.canvas.getContext("2d");
   setInterval(draw, 1000 / global.FPS);
 }
 
 function draw() {
+  "use strict";
   global.context2D.clearRect(0, 0, global.canvas.width, global.canvas.height);
   global.context2D.drawImage(global.image, global.x, global.y);
 
